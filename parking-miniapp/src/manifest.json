@@ -1,0 +1,22 @@
+{
+  "name": "停车管理",
+  "appid": "__UNI__PARKING",
+  "description": "停车场用户端小程序：扫码绑车、套餐续费、临停缴费",
+  "versionName": "1.0.0",
+  "versionCode": "100",
+  "transformPx": false,
+  "mp-weixin": {
+    "appid": "touristappid",
+    "setting": {
+      "urlCheck": false,
+      "es6": true,
+      "postcss": true,
+      "minified": false
+    },
+    "usingComponents": true
+  },
+  "uniStatistics": {
+    "enable": false
+  },
+  "vueVersion": "3"
+}

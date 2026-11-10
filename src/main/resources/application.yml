@@ -1,0 +1,52 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: parking
+  datasource:
+    url: jdbc:mysql://localhost:3306/parking?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: parking
+    password: parking123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      database: 0
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 开发期打印SQL，上线改为 noLogging
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+sa-token:
+  token-name: Authorization
+  token-prefix: Bearer
+  timeout: 2592000        # 30天
+  is-concurrent: true
+  is-share: true
+  is-log: false
+
+parking:
+  wechat-mini:
+    mock: false                      # true=模拟登录（跳过 code2session，免真实 appid/secret）；联调可用
+    app-id:        # 与微信开发者工具项目 appid 一致
+    secret: XXX     # 公众平台-开发设置中生成
+  wechat-pay:
+    mock: true                       # true=模拟支付（跳过真实微信支付，便于测试）；上线前必须改为 false
+    app-id: wxYourAppId              # 小程序 appId
+    merchant-id: yourMchId           # 商户号
+    api-v3-key: yourApiV3Key         # API v3 密钥
+    merchant-serial-number: yourCertSerialNo
+    private-key-path: /path/to/apiclient_key.pem
+    notify-url: https://your-domain/api/pay/notify
+
+logging:
+  level:
+    com.parking: debug
